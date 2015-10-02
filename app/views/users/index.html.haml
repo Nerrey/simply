@@ -1,0 +1,32 @@
+- model_class = User
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.id, user_path(user)
+        %td=l user.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(user), :class => 'btn btn-default btn-xs'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), user_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary'
+
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?117"></script>
+
+<script type="text/javascript">
+VK.init({apiId: 5091389, onlyWidgets: true});
+</script>
+
+<!-- Put this div tag to the place, where the Comments block will be -->
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 10, width: "665", attach: "*"});
+</script>

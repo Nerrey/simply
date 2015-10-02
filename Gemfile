@@ -17,7 +17,8 @@ gem 'devise'
 gem 'simple_form'
 gem "russian"
 
-# bugem 'unicorn'
+gem 'capistrano'
+gem 'unicorn'
 
 gem 'redis'
 gem 'redis-store', :require => 'redis-store'

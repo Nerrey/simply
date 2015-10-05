@@ -41,7 +41,7 @@ set :linked_dirs, %w(bin log tmp/cache vendor/bundle public/system)
 # -----------------------------------------------------------------------------
 
 # Configure RVM
-set :rvm_ruby_version, '2.1.5'
+set :rvm_ruby_version, '2.2.2'
 set :rake,            "rvm use #{fetch(:rvm_ruby_version)} do bundle exec rake"
 set :bundle_cmd,      "rvm use #{fetch(:rvm_ruby_version)} do bundle"
 

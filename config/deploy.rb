@@ -38,7 +38,6 @@ set :linked_dirs, %w(bin log tmp/cache vendor/bundle public/system)
 # set :keep_releases, 5
 
 # You unlikely have to change below this line
-set :bundle_binstubs, nil
 # -----------------------------------------------------------------------------
 
 # Configure RVM

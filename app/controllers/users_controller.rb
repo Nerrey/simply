@@ -6,6 +6,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def check_id
+    redirect_to "http://simply.nerrey.lclients.ru/set_id"
+  end
+
+  def set_id
+    
+    
+  end
+
   # GET /users/1
   def show
   end

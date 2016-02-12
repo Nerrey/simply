@@ -1,0 +1,15 @@
+= simple_form_for @pair, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :word
+  = error_span(@pair[:word])
+  = f.input :translate1
+  = error_span(@pair[:translate1])
+  = f.input :translate2
+  = error_span(@pair[:translate2])
+  = f.input :translate3
+  = error_span(@pair[:translate3])
+  = f.input :translate4
+  = error_span(@pair[:translate4])
+  = f.association :books, collection: Book.order(:name)
+  = f.association :word_classes, collection: WordClass.order(:name)
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), pairs_path, :class => 'btn btn-default'

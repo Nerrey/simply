@@ -17,6 +17,8 @@ gem 'devise'
 gem 'simple_form'
 gem "russian"
 
+gem 'cancancan'
+
 gem 'capistrano'
 gem 'unicorn'
 

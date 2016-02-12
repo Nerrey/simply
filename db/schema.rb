@@ -11,14 +11,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002102646) do
+ActiveRecord::Schema.define(version: 20160212154625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "books", force: :cascade do |t|
+    t.string   "name"
+    t.string   "publisher"
+    t.string   "year"
+    t.string   "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books_pairs", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "pair_id"
+  end
+
+  add_index "books_pairs", ["book_id"], name: "index_books_pairs_on_book_id", using: :btree
+  add_index "books_pairs", ["pair_id"], name: "index_books_pairs_on_pair_id", using: :btree
+
+  create_table "pairs", force: :cascade do |t|
+    t.string   "word"
+    t.string   "translate1"
+    t.string   "translate2"
+    t.string   "translate3"
+    t.string   "translate4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pairs_word_classes", force: :cascade do |t|
+    t.integer "word_class_id"
+    t.integer "pair_id"
+  end
+
+  add_index "pairs_word_classes", ["pair_id"], name: "index_pairs_word_classes_on_pair_id", using: :btree
+  add_index "pairs_word_classes", ["word_class_id"], name: "index_pairs_word_classes_on_word_class_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "uid"
-    t.string   "image_url"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "word_classes", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

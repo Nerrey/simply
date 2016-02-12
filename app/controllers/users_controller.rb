@@ -6,15 +6,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def check_id
-    redirect_to "http://simply.nerrey.lclients.ru/set_id"
-  end
-
-  def set_id
-    
-    
-  end
-
   # GET /users/1
   def show
   end
@@ -33,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to users_path, notice: 'User was successfully created.'
     else
       render :new
     end
@@ -42,7 +33,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to users_path, notice: 'User was successfully updated.'
     else
       render :edit
     end
@@ -62,6 +53,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params[:user]
+      params.require(:user).permit(:email, :current_password, :password, :password_confirmation)
     end
 end

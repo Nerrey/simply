@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'cancancan'
 gem 'rails'
 
 gem 'pg'
@@ -17,7 +18,6 @@ gem 'devise'
 gem 'simple_form'
 gem "russian"
 
-gem 'cancancan'
 
 gem 'capistrano'
 gem 'unicorn'

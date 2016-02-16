@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'cancancan'
 gem 'rails'
 
 gem 'pg'
@@ -22,6 +21,7 @@ gem "russian"
 gem 'capistrano'
 gem 'unicorn'
 
+gem 'cancancan'
 gem 'redis'
 gem 'redis-store', :require => 'redis-store'
 gem 'redis-rails'

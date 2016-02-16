@@ -1,11 +1,17 @@
 = simple_form_for @book, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :name
-  = error_span(@book[:name])
-  = f.input :publisher
-  = error_span(@book[:publisher])
-  = f.input :year
-  = error_span(@book[:year])
-  = f.input :author
-  = error_span(@book[:author])
-  = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), books_path, :class => 'btn btn-default'
+  .row
+    .col-md-6
+      = f.input :name, label: "Название"
+  .row
+    .col-md-6
+      = f.input :publisher, label: "Издательство"
+  .row
+    .col-md-6
+      = f.input :year, label: "Год"
+  .row
+    .col-md-6
+      = f.input :author, label: "Автор"
+  .row
+    .col-md-6
+      = f.button :submit, "Сохранить", :class => 'btn-primary'
+      = link_to "Отмена", books_path, :class => 'btn btn-default'

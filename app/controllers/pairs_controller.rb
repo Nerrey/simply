@@ -53,6 +53,6 @@ class PairsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def pair_params
-      params.require(:pair).permit(:word, :translate1, :translate2, :translate3, :translate4, :word_class_id, :book_id)
+      params.require(:pair).permit(:word, :translate1, :translate2, :translate3, :translate4, word_class_ids: [], book_ids: [])
     end
 end

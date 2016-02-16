@@ -1,21 +1,24 @@
 - model_class = WordClass
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h1
+    Части речи
+%br
+= link_to "Добавить", new_word_class_path, :class => 'btn btn-primary'
+%br
+%br
 %table.table.table-striped
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:created_at)
+      %th
+        Название
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @word_classes.each do |word_class|
       %tr
         %td= link_to word_class.id, word_class_path(word_class)
         %td= word_class.name
-        %td=l word_class.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_word_class_path(word_class), :class => 'btn btn-default btn-xs'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), word_class_path(word_class), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_word_class_path, :class => 'btn btn-primary'

@@ -1,6 +1,8 @@
 class PairsController < ApplicationController
   before_action :set_pair, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :authenticate_user!, :only => [:add_pair]
+  skip_before_filter :verify_authenticity_token, :only => [:add_pair]
+  
   # GET /pairs
   def index
     @pairs = Pair.all
@@ -43,6 +45,21 @@ class PairsController < ApplicationController
   def destroy
     @pair.destroy
     redirect_to pairs_url, notice: 'Pair was successfully destroyed.'
+  end
+
+  def add_pair
+    par = params.permit(:word, :translate1, :translate2, :translate3, :translate4, word_class_ids: [], book_ids: [])
+    @pair = Pair.new(par)
+
+    if @pair.save
+      render text: "Ok"
+    else
+      render text: "Wrong params"
+    end
+  end
+
+  def about
+
   end
 
   private

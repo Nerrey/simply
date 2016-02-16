@@ -24,7 +24,7 @@ class WordClassesController < ApplicationController
     @word_class = WordClass.new(word_class_params)
 
     if @word_class.save
-      redirect_to @word_class, notice: 'Word class was successfully created.'
+      redirect_to word_classes_path, notice: 'Word class was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class WordClassesController < ApplicationController
   # PATCH/PUT /word_classes/1
   def update
     if @word_class.update(word_class_params)
-      redirect_to @word_class, notice: 'Word class was successfully updated.'
+      redirect_to word_classes_path, notice: 'Word class was successfully updated.'
     else
       render :edit
     end
